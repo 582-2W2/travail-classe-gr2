@@ -1,4 +1,4 @@
-# Animations et interactivité Web (Groupe 2)
+# Animation et interactivité Web (Groupe 2)
 ## Exemples pratiques travaillés en classe
 
 ### Semaine 1 :heavy_check_mark:
