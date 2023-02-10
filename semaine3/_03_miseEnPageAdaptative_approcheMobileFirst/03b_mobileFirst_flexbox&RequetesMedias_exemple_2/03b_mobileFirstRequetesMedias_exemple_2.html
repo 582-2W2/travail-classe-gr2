@@ -21,7 +21,7 @@
 /* Styles de base
 =============================================== */
 html {
-    width: 100vw;
+    /* width: 100vw; */
     height: 100vh;
     /*Calcul automatique de la taille du texte à la racine du document*/
     font-size: clamp(14px, 0.75rem + 1vw, 22px);
@@ -113,7 +113,7 @@ article,
 aside {
     min-height: 40vh;
     /*Ces balises peuvent s'étirer*/
-
+    flex: 1 1 0;
 }
 
 footer {
@@ -136,7 +136,13 @@ footer {
 */
 
 @media screen and (min-width: 768px) {
+    nav.menu {
+        flex-direction: row;
+    }
 
+    nav.menu > a {
+        flex: 1 0 0;
+    }
 }
 
 
@@ -151,15 +157,18 @@ footer {
 */
 @media screen and (min-width: 992px) {
     main {
-
+        flex-flow: wrap row;
+        flex: 1 1 auto;
     }
 
 
     article {
-
+        flex: 2 1 0;
     }
 
     footer {
+        justify-content: center;
+        column-gap: 3vw;
 
     }
 
@@ -177,7 +186,7 @@ footer {
     <h1>Démo flexbox et "mobile first"</h1>
     <nav class="menu">
       <a href="#">À propos</a>
-      <a href="#">Services</a>
+      <a href="#">Produits et services</a>
       <a href="#">Projets</a>
       <a href="#">Carrières</a>
       <a href="#">Contacts</a>
