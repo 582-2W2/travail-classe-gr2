@@ -1,4 +1,4 @@
-# Animation et interactivité Web (Groupe 1)
+# Animation et interactivité Web (Groupe 2)
 ## Exemples pratiques travaillés en classe
 
 ### Semaine 4 :construction:
