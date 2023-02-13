@@ -35,9 +35,14 @@
 
             .conteneur-flex div:nth-child(2) {
                 background-color: aqua;
-                transform: scale(0);
+                /* Pour le moment la propriété "scale" qui remplace 
+                    "transform:scale()" est considérée expérimentale (pas assez
+                    de support dans les brrowsers utilisés à travers le monde) */
+                /* UTILISEZ SEULEMENT POUR DÉCOUVRIR */
+                scale: 0;
 
                 /*Effet de transition*/
+                transition: scale 0.5s;
             }
 
             .conteneur-flex p {
@@ -47,18 +52,23 @@
                 border-radius: 1rem;
                 /*Transparent au démarrage*/
                 opacity: 0;
+                color: rgb(25, 52, 69);
 
                 /*Effet de transition avec un délai*/
+                transition: opacity 1s, color 10s;
             }
 
             /*
             Au survol de la première division,
             on anime la 2e div... et on fait apparaitre le p
            */
-            .conteneur-flex div:nth-child(1) {
+            .conteneur-flex div:first-child:hover + div {
+                scale: 1;
             }
 
-            .conteneur-flex div:nth-child(1) {
+            .conteneur-flex div:first-child:hover ~ p {
+                opacity: 1;
+                color: red;
             }
         </style>
     </head>
