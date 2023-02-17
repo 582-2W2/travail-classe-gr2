@@ -8,7 +8,7 @@
 
         <style>
             /*Normalisation supplémentaire*/
-            * {
+            html {
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
@@ -28,11 +28,12 @@
                 font-size: 1.5rem;
                 border: 1px solid black;
                 border-radius: 0.2rem;
+                width: 300px;
             }
 
             /*
             * Apparence ou animation d'éléments HTML selon l'état de la case à cocher
-            * Si la case est cochée, on met le texte de la légende en bolder
+            * Si la case est cochée, on met le texte de l'étiquette en "bolder"
             * et on fait apparaître la division
             * Le tout fonctionne même si la case à cocher n'est pas affichée!
             */
@@ -41,20 +42,24 @@
                 /*
                 Au démarrage, on place la div complètement à gauche
                 */
+                translate: calc(-100% - 0.5rem);
 
                 /*
                 * Effet de transition
                 */
-                transition: transform 1s;
+                transition: translate 1s;
+            }
+
+            #caseAcocher:checked + label  {
+                font-weight: bolder;
+            }
+
+            #caseAcocher:checked ~ div {
+                translate: 0;
             }
 
             #caseAcocher {
-            }
-
-            #caseAcocher {
-            }
-
-            #caseAcocher {
+                display: none;
             }
         </style>
     </head>
