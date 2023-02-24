@@ -191,7 +191,7 @@
             On met le menu opaque
         */
             #cc-pour-bouton-burger:checked ~ .barre-menu > .menu {
-                opacity: 1;
+                opacity: 0.9;
             }
 
             /*Arrivée des différents boutons avec un délai*/
@@ -309,27 +309,52 @@
              */
 
             //Récupérer la case à cocher et la balise <body>
-            let leCheckBox;
-            let leBody;
+            // Utiliser les méthodes du DOM pour accéder aux éléments de la page
+            let leCheckBox = document.getElementById('cc-pour-bouton-burger');
+            // let leCheckBox = document.querySelector('#cc-pour-bouton-burger');
+            let leBody = document.querySelector('body');
+
+            leCheckBox.addEventListener('click', gererLeDefilement);
 
             /*
              * Gérer le défilement des éléments de la page HTML quand le menu est affiché sur petit écran
              */
 
-            function gererLeDefilement(event) {}
+            function gererLeDefilement(event) {
+                console.log('État du checkbox : est-il coché ? ', leCheckBox.checked);
+
+                if(leCheckBox.checked) {
+                    // Le menu mobile est affiché... donc on doit arrêter le défilement
+                    leBody.style.overflowY = 'hidden';
+                }
+                else {
+                    leBody.style.overflowY = 'scroll';
+                }
+
+            }
 
             /*
              * Script qui contrôle l'état de la case à cocher pour fermer
              * le menu quand on clique sur un bouton
              */
             /*Récupérer les boutons du menu*/
-            let lesBoutons;
+            let lesBoutons = document.querySelectorAll('nav.menu > a');
+            console.log('Tableaux des 5 boutons : ', lesBoutons);
 
-            /*Mettre un gestionnaire d'événement sur chaque bouton avec un boucle for of*/
+            /*Mettre un gestionnaire d'événement sur chaque bouton avec une boucle for of */
+            
+            for (let unBouton of lesBoutons) {
+                unBouton.addEventListener('click', controlerBoutonBurger);
+            }
 
             function controlerBoutonBurger() {
-                //Gérer l'état de la case à cocher
-                //Remettre la barre de défilement sur le body
+                // //Gérer l'état de la case à cocher
+                // leCheckBox.checked = false;
+                // //Remettre la barre de défilement sur le body
+                // leBody.style.overflowY = 'scroll';
+
+                // OU, plus simplement :
+                leCheckBox.click();
             }
         </script>
     </body>
