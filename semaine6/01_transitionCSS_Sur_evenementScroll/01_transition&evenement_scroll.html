@@ -83,11 +83,11 @@
 
             .apparition {
                 /*
-                Au démarrage, les éléments ne sont pas visibles
-                On va les faire apparaître avec le défilement de la page
-                quand ils vont atteindre une certaine hauteur
-            */
-                transform: translateX(110%);
+                    Au démarrage, les éléments ne sont pas visibles
+                    On va les faire apparaître avec le défilement de la page
+                    quand ils vont atteindre une certaine hauteur
+                */
+                transform: translateX(100%);
                 opacity: 0;
                 transition: opacity 1s, transform 1s;
             }
@@ -194,6 +194,7 @@
         </section>
 
         <script>
+
             /*
                 /////Code adapté de: ///////
                 https://alvarotrigo.com/blog/css-animations-scroll/
@@ -203,27 +204,56 @@
                 la taille d'un élément et sa position relative par rapport à la zone d'affichage.
                 Voir à ce sujet: https://developer.mozilla.org/fr/docs/Web/API/Element/getBoundingClientRect
             */
+
+            /*Gestionnaire d'événement scroll sur la fenêtre*/
+            window.addEventListener('scroll', faireApparaitre);
+
+
             function faireApparaitre() {
-                let lesSectionsAfaireApparaitre;
+                // Saisir toutes les sections qui doivent apparaître avec un effet 
+                // de transition lorsqu'elle deviennent "en vue"
+                let lesDivsDesSectionsCachees = document.querySelectorAll('.apparition');
+                
                 // Hauteur du viewport : https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight
+                let hauteurViewport = window.innerHeight;
+                console.log('Hauteur du viewport', hauteurViewport);
 
-                for (let uneSection of lesSectionsAfaireApparaitre) {
+                for (let uneSection of lesDivsDesSectionsCachees) {
                     // Obtenir l'information sur les dimensions de la "boîte" CSS correspondant à la section
+                    let infoBoite = uneSection.getBoundingClientRect();
+                    console.log("Information sur les dimensions de la boîte dans la section : ", infoBoite);
 
-                    let positionDuHaut;
-                    let hauteurDeLaSection;
+                    // let positionDuHaut = infoBoite.top;
+                    // let hauteurDeLaSection = infoBoite.height;
+                    // OU, plus simplement :
+                    let positionDuBas = infoBoite.bottom;
 
                     // Modifier les propriétés d'opacité et de déplacement ...
                     // ... si la section est entièrement *dans* le viewport : la dévoiler
-
-
+                    if(positionDuBas < hauteurViewport) {
+                        uneSection.style.transform = "translateX(0)";
+                        uneSection.style.opacity = 1;
+                        // Ou, aussi valide dans ce cas : 
+                        // uneSection.style.transform = "unset";
+                        // uneSection.style.opacity = "unset";
+                    }
                     // ... et sinon : la cacher
+                    else {
+                        uneSection.style.transform = "translateX(100%)";
+                        uneSection.style.opacity = 0;
+                    }
 
                 }
             }
 
-            /*Gestionnaire d'événement scroll sur la fenêtre*/
+            
 
+
+            // let fruits = ["Pomme", "Pamplemousse", "Grenade"]; // Array (tableau ou liste)
+            // let notesAlain = {nom: "Giguère", prenom: "Alain", noDossier: "e0987654", note: 75}; // Object (objet ou un dictionnaire)
+
+            // console.log("Mon fruit préféré : ", fruits[2]);
+            // console.log("Le numéro de dossier de Alain : ", notesAlain.noDossier);
         </script>
     </body>
 </html>
