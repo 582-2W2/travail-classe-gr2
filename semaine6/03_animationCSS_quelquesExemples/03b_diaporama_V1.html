@@ -40,7 +40,20 @@
 
         /* Animations CSS : fondu-image
         =============================================== */
-
+        @keyframes fondu-image {
+            0%, 100% {
+                background-image: url(images/image1.jpg);
+            }
+            25% {
+                background-image: url(images/image2.jpg);
+            }
+            50% {
+                background-image: url(images/image3.jpg);
+            }
+            75% {
+                background-image: url(images/image4.jpg);
+            }
+        }
 
 
         /* Affectation de l'animations CSS
@@ -48,7 +61,11 @@
 
         .diaporama {
            /*Animation*/
-           
+           animation: fondu-image 8s infinite backwards;
+           /* animation-name: fondu-image;
+           animation-duration: 8s;
+           animation-iteration-count: infinite;
+           animation-fill-mode: backwards; */
         }
     </style>
 </head>

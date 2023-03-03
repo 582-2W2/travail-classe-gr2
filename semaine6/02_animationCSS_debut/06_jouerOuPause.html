@@ -51,7 +51,7 @@
 			background-size: 20px 20px;
 
 			/* Animation */
-
+			animation: animer-arriere-plan 3s infinite alternate;
 		}
 		
 		
@@ -59,7 +59,14 @@
 			L'animation du deuxième carré ne joue pas au démarrage...
 			Mais la faire jouer au survol du carré par le curseur.
 		*/
-
+		section div:last-of-type {
+			animation-play-state: paused;
+		}
+		
+		section div:last-of-type:hover {
+			animation-play-state: running;
+		}
+		
 	</style>
 </head>
 

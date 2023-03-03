@@ -43,18 +43,28 @@
             display:flex;
             justify-content: center;
             align-items: center;
+
+            animation: arriere-plan 5s infinite;
         }
 
 
         /* Animations CSS: changer-couleur
         #33CCCC #33CC36 #B8CC33 #FCCA00 #33CC36 #33CCCC
         =============================================== */
-
-
-
-        /* Affectation de l'animations CSS
-        =============================================== */
-
+        @keyframes arriere-plan {
+            from, to {
+                background-color: #3CC;
+            }
+            20%, 80% {
+                background-color: #33CC36;
+            }
+            40% {
+                background-color: #B8CC33;
+            }
+            60% {
+                background-color: #FCCA00;
+            }
+        }
         
     </style>
 

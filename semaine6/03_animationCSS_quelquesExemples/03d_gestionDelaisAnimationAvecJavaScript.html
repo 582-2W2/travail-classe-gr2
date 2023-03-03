@@ -27,20 +27,22 @@
                 align-items: center;
             }
 
-            section {
+            section.vague {
                 width: 100%;
                 flex-grow: 1;
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: center;
                 align-items: center;
                 background: #000;
                 gap: 0 1vw;
             }
-            div {
+            section.vague div {
                 width: 2vw;
                 height: 30vh;
                 background: linear-gradient(45deg, cyan, #fff);
                 border-radius: 1vw;
+                animation: animation-vague 3s infinite;
             }
 
             /* Animations CSS
@@ -55,9 +57,6 @@
                 }
             }
 
-            /* Affectation de l'animations CSS à la classe 'vague'
-            * Les délais pour l'animation de chaque div sont affectés avec JavaScript
-            * ======================================================================== */
         </style>
     </head>
 
@@ -67,27 +66,28 @@
             <h3>Déclarer les délais d'animation (<code>animation-delay</code>) avec JavaScript...</h3>
         </header>
 
-        <section>
-            <div class="vague"></div>
-            <div class="vague"></div>
-            <div class="vague"></div>
-            <div class="vague"></div>
-            <div class="vague"></div>
-            <div class="vague"></div>
-            <div class="vague"></div>
-            <div class="vague"></div>
-            <div class="vague"></div>
-            <div class="vague"></div>
-            <div class="vague"></div>
-            <div class="vague"></div>
+        <section class="vague">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </section>
 
         <script>
             //Récupérer toutes les <div> ayant la classe .vague
-            let lesDivs;
+            let lesDivs = document.querySelectorAll('section.vague div');
 
             //Attribuer des délais progressifs de 0.1s avec une boucle for
-            let nbDivs;
+            for(let i=0; i<lesDivs.length; i++) {
+                lesDivs[i].style.animationDelay = i*0.1 + 's';
+            }
         </script>
     </body>
 </html>

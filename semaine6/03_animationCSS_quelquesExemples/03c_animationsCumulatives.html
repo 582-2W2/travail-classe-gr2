@@ -114,13 +114,28 @@
             /* Images-clés des animations CSS */
 
             @keyframes deplacement-vertical-des-feuilles {
+                from {
+                    transform: translateY(0) rotateX(0);
+                }
+
+                to {
+                    transform: translateY(calc(75vh - 100%)) rotateX(360deg);
+                }
             }
 
             @keyframes deplacement-conteneur-feuille {
+                from {
+                    transform: translateX(0) rotateY(0);
+                }
+
+                to {
+                    transform: translateX(calc(75vw - 100%)) rotateY(360deg);
+                }
             }
 
             .conteneur-feuille {
                 /*Propriété raccourcie de l'animation CSS*/
+                animation: deplacement-conteneur-feuille 5s infinite alternate;
             }
 
             /*Pour voir le déplacement des conteneurs des feuilles*/
@@ -133,24 +148,29 @@
 
             .conteneur-feuille:nth-child(2) {
                 /*Délai de 2 secondes avant le début de l'animation*/
+                animation-delay: 2s;
             }
 
             .conteneur-feuille:nth-child(3) {
                 /*Délai de 4 secondes avant le début de l'animation*/
+                animation-delay: 3.5s;
             }
 
             .feuille {
                 /*Propriétés communes de l'animation de chaque feuille*/
+                animation: deplacement-vertical-des-feuilles 3s infinite alternate;
             }
 
             /*Ajout de délais sur les feuiles 2 et 3 pour que les animations ne partent pas toutes en même temps*/
 
             .feuille2 {
                 /*Délai de 2 secondes avant le début de l'animation*/
+                animation-delay: 1.5s;
             }
 
             .feuille3 {
                 /*Délai de 4 secondes avant le début de l'animation*/
+                animation-delay: 3s;
             }
         </style>
     </head>
