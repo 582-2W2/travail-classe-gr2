@@ -318,7 +318,7 @@
         function mettreAnimation2() {
 
             for (let unRectangle of lesRectangles) {
-               
+               unRectangle.classList.replace('anim-rectangle-1', 'anim-rectangle-2');
             }
 
             //Modifier l'état de la case à cocher
@@ -330,7 +330,7 @@
         function remettreAnimation1() {
 
             for (let unRectangle of lesRectangles) {
-                
+                unRectangle.classList.replace('anim-rectangle-2', 'anim-rectangle-1');
             }
 
             //Modifier l'état de la case à cocher

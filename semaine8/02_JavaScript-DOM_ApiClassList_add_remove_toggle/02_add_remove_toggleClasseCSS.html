@@ -217,10 +217,10 @@
     </header>
 
     <section>
-        <div> 1 </div>
-        <div> 2 </div>
-        <div> 3 </div>
-        <div> 4 </div>
+        <div>1</div>
+        <div>2</div>
+        <div class="rouge important chapitre3">3</div>
+        <div>4</div>
     </section>
 
     <footer>
@@ -230,6 +230,19 @@
 
     <!-- Intégration du script-->
     <script>
+        // Intro à classList : voir le résultat dans la console.
+        // On attrape le div #3
+        let div3 = document.querySelector('section > div:nth-of-type(3)');
+        // On l'affiche dans la console
+        console.log('Le div #3 : ', div3);
+        // On accède à sa collection de valeur de l'attribut "class" (donc la propriété "classList")
+        // ... et on y ajoute une valeur de classe CSS
+        div3.classList.add('ajoutee-dans-js');
+        // ... on y retranche une classe
+        div3.classList.remove('important');
+        // ... on fait basculer la classe 'important'
+        div3.classList.toggle('important');
+        console.log('Les classes CSS du div #3 : ', div3.classList);
 
         /*///////////////////////////////////////////////////////////////////////
                                     LES VARIABLES
@@ -238,7 +251,7 @@
         /*Les rectangles animés*/
         let lesRectangles = document.querySelectorAll("section > div");
 
-        /*Les boutons du menu*/
+        /*Les "boutons" du menu*/
         let lesBoutons = document.querySelectorAll(".menu a");
 
         /*La case à cocher qui contrôle le bouton burger
@@ -250,13 +263,13 @@
         ///////////////////////////////////////////////////////////////////////*/
 
         //Le premier bouton attribue une classe CSS à tous les rectangles
-
+        lesBoutons[0].addEventListener('click', ajouterClasseCSS);
 
         //Le deuxième bouton enlève une classe CSS à tous les rectangles
-      
+        lesBoutons[1].addEventListener('click', enleverClasseCSS);
 
         //Le dernier bouton ajoute OU enlève une classe CSS à tous les rectangles
-
+        lesBoutons[2].addEventListener('click', ajouterOuEnleverClasseCSS);
 
 
         /*///////////////////////////////////////////////////////////////////////
@@ -267,7 +280,7 @@
         function ajouterClasseCSS() {
 
             for (let unRectangle of lesRectangles) {
-               
+               unRectangle.classList.add('anim-rectangle');
             }
 
             //Modifier l'état de la case à cocher pour mobiles
@@ -278,7 +291,7 @@
         //Fonction qui enlève une classe CSS
         function enleverClasseCSS() {
             for (let unRectangle of lesRectangles) {
-                
+                unRectangle.classList.remove('anim-rectangle');
             }
 
             //Modifier l'état de la case à cocher pour mobiles
@@ -288,7 +301,7 @@
         //Fonction qui ajoute OU enlève une classe CSS
         function ajouterOuEnleverClasseCSS() {
             for (let unRectangle of lesRectangles) {
-               
+                unRectangle.classList.toggle('anim-rectangle');
             }
 
             //Modifier l'état de la case à cocher pour mobiles

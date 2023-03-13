@@ -60,14 +60,14 @@
                 opacity: 0;
                 transform: scale(.1, .1) translateY(-200vh);
                 /*Accélération vers la prochaine image-clé*/
- 
+                animation-timing-function: cubic-bezier(.88,.17,.94,.73);
             }
 
             60% {
                 opacity: 1;
                 transform: scale(.75, .75) translateY(10vh);
                 /*Ralentissement vers la prochaine image-clé*/
-
+                animation-timing-function: cubic-bezier(.03,.94,.14,.94);
             }
 
             100% {
@@ -82,20 +82,20 @@
 
             0% {
                 opacity: 0;
-                transform: translate3d(-3000px, 0, 0);
+                transform: translateX(-3000px);
             }
 
             60% {
                 opacity: 1;
-                transform: translate3d(25px, 0, 0);
+                transform: translateX(25px);
             }
 
             75% {
-                transform: translate3d(-10px, 0, 0);
+                transform: translateX(-10px);
             }
 
             90% {
-                transform: translate3d(5px, 0, 0);
+                transform: translateX(5px);
             }
 
             to {
@@ -106,12 +106,13 @@
         /* Affectation des animations
         ====================================================================== */
         .arrivee-zoom {
-            
+            animation: arrivee-zoom 1s;
         }
 
         .arrivee-gauche-rebond {
             /*Délai de 1.5s et l'accélération est la même entre chaque image-clé*/
-            
+            animation: arrivee-gauche-rebond 1s 1.5s ease-out;
+            animation-fill-mode: backwards;
         }
     </style>
 </head>
